@@ -678,6 +678,7 @@ public abstract class SharedActionsSystem : EntitySystem
         {
             dirty = true;
             action.Charges--;
+            if (action is { Charges: 0, RenewCharges: false, DisableWhenEmpty: true }) // DeltaV - check DisableWhenEmpty
             if (action is { Charges: 0, RenewCharges: false })
             {
                 var disabledEv = new ActionGettingDisabledEvent(performer);
